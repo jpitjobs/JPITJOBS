@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>求人情報 - ABC技術有限会社</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background: #f4f4f4; }
+    .container { background: white; padding: 20px 30px; max-width: 800px; margin: auto; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1, h2 { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background-color: #eee; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>求人情報</h1>
+    <h2>会社名：ABC技術有限会社</h2>
+
+    <table>
+      <tr>
+        <th>職種</th>
+        <td>ITエンジニア（東京勤務）</td>
+      </tr>
+      <tr>
+        <th>仕事内容</th>
+        <td>日本のお客様向けソフトウェア開発業務</td>
+      </tr>
+      <tr>
+        <th>雇用形態</th>
+        <td>正社員</td>
+      </tr>
+      <tr>
+        <th>給与</th>
+        <td>月給 250,000円 ～ 350,000円（経験による）</td>
+      </tr>
+      <tr>
+        <th>就業時間</th>
+        <td>9:00 ～ 18:00（休憩1時間）</td>
+      </tr>
+      <tr>
+        <th>休日</th>
+        <td>土・日・祝日（日本のカレンダーに準ずる）</td>
+      </tr>
+      <tr>
+        <th>勤務地</th>
+        <td>東京都（詳細は面談時）</td>
+      </tr>
+      <tr>
+        <th>応募条件</th>
+        <td>IT実務経験2年以上、日本語能力N3以上</td>
+      </tr>
+      <tr>
+        <th>応募方法</th>
+        <td>履歴書をメールで送付してください。</td>
+      </tr>
+      <tr>
+        <th>お問い合わせ</th>
+        <td>メール: hiring@abc.com</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
