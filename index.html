@@ -1,102 +1,288 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>求人情報 - JPIT Jobs</title>
+  <title>Tuyển dụng - JPIT Jobs</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; }
-    .container { background: white; padding: 30px; border-radius: 8px; max-width: 800px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    h1 { color: #333; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
-    th { background: #f2f2f2; }
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      background: #f9f9f9; 
+    }
+    
+    .container { 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 20px; 
+    }
+    
+    .header {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    h1 { 
+      color: #333; 
+      margin-top: 0;
+    }
+    
+    .job-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+    
+    .job-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .job-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .job-card h2 {
+      margin-top: 0;
+      color: #2962ff;
+      font-size: 1.3rem;
+    }
+    
+    .job-meta {
+      margin-bottom: 15px;
+    }
+    
+    .job-meta p {
+      margin: 5px 0;
+    }
+    
+    .job-desc {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      background: #333;
+      color: white;
+    }
+    
+    /* Tab system for languages */
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    
+    .tab {
+      padding: 10px 20px;
+      background: #eee;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px 5px 0 0;
+      margin-right: 5px;
+    }
+    
+    .tab.active {
+      background: #2962ff;
+      color: white;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    /* Style for Japanese table */
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      margin-top: 20px; 
+    }
+    
+    th, td { 
+      border: 1px solid #ccc; 
+      padding: 10px; 
+      text-align: left; 
+    }
+    
+    th { 
+      background: #f2f2f2; 
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>求人情報 – JPIT Jobs</h1>
-    <table>
-      <tr>
-        <th>会社名</th>
-        <td>JPIT Jobs株式会社</td>
-      </tr>
-      <tr>
-        <th>職種</th>
-        <td>ITエンジニア（東京勤務）</td>
-      </tr>
-      <tr>
-        <th>仕事内容</th>
-        <td>日本のお客様向けシステム開発</td>
-      </tr>
-      <tr>
-        <th>雇用形態</th>
-        <td>正社員</td>
-      </tr>
-      <tr>
-        <th>給与</th>
-        <td>月給 250,000円～350,000円（経験による）</td>
-      </tr>
-      <tr>
-        <th>応募条件</th>
-        <td>IT経験2年以上、日本語N3以上</td>
-      </tr>
-      <tr>
-        <th>勤務地</th>
-        <td>東京都内</td>
-      </tr>
-      <tr>
-        <th>応募方法</th>
-        <td>履歴書を下記のメールまでお送りください<br>Email: hiring@jpitjobs.com</td>
-      </tr>
-    </table>
+    <!-- Language tabs -->
+    <div class="tabs">
+      <button class="tab active" onclick="openTab('vietnamese')">Tiếng Việt</button>
+      <button class="tab" onclick="openTab('japanese')">日本語</button>
+    </div>
+    
+    <!-- Vietnamese content -->
+    <div id="vietnamese" class="tab-content active">
+      <div class="header">
+        <h1>Tuyển dụng - JPIT Jobs</h1>
+      </div>
+      
+      <div class="job-grid">
+        <!-- Job 1 -->
+        <div class="job-card">
+          <h2>Kỹ sư phát triển hệ thống (Tokyo)</h2>
+          <div class="job-meta">
+            <p><strong>Công ty:</strong> ABC Solutions</p>
+            <p><strong>Địa điểm:</strong> Tokyo</p>
+            <p><strong>Lương:</strong> 300,000 ~ 400,000 JPY</p>
+          </div>
+          <div class="job-desc">
+            <strong>Mô tả:</strong> Phát triển hệ thống cho khách hàng Nhật, sử dụng Java/Spring Boot.
+            <br><strong>Yêu cầu:</strong> Có kinh nghiệm phát triển Web App, tiếng Nhật N3 trở lên.
+          </div>
+        </div>
+        
+        <!-- Job 2 -->
+        <div class="job-card">
+          <h2>Kỹ sư kiểm thử phần mềm (Osaka)</h2>
+          <div class="job-meta">
+            <p><strong>Công ty:</strong> OsakaTech</p>
+            <p><strong>Địa điểm:</strong> Osaka</p>
+            <p><strong>Lương:</strong> 270,000 ~ 320,000 JPY</p>
+          </div>
+          <div class="job-desc">
+            <strong>Mô tả:</strong> Thực hiện kiểm thử phần mềm trong lĩnh vực tự động hóa.
+            <br><strong>Yêu cầu:</strong> Có kinh nghiệm kiểm thử, ưu tiên ISTQB, tiếng Nhật N4+.
+          </div>
+        </div>
+        
+        <!-- Job 3 -->
+        <div class="job-card">
+          <h2>Kỹ sư cầu nối (Remote + Nhật)</h2>
+          <div class="job-meta">
+            <p><strong>Công ty:</strong> JPIT Offshore</p>
+            <p><strong>Địa điểm:</strong> Việt Nam / Nhật Bản</p>
+            <p><strong>Lương:</strong> 1,800 ~ 2,500 USD</p>
+          </div>
+          <div class="job-desc">
+            <strong>Mô tả:</strong> Làm việc giữa team VN và khách hàng Nhật, quản lý tiến độ dự án.
+            <br><strong>Yêu cầu:</strong> Có kinh nghiệm làm BrSE, tiếng Nhật N2 trở lên.
+          </div>
+        </div>
+        
+        <!-- Job 4 - Mẫu để thêm job mới -->
+        <div class="job-card">
+          <h2>Frontend Developer (Tokyo)</h2>
+          <div class="job-meta">
+            <p><strong>Công ty:</strong> JPIT Jobs Co., Ltd.</p>
+            <p><strong>Địa điểm:</strong> Tokyo</p>
+            <p><strong>Lương:</strong> 280,000 ~ 350,000 JPY</p>
+          </div>
+          <div class="job-desc">
+            <strong>Mô tả:</strong> Phát triển giao diện người dùng sử dụng React/Vue.js.
+            <br><strong>Yêu cầu:</strong> 2+ năm kinh nghiệm Frontend, tiếng Nhật N3 trở lên.
+          </div>
+        </div>
+        
+        <!-- Bạn có thể dễ dàng thêm job mới bằng cách sao chép mẫu bên dưới -->
+        <!-- 
+        <div class="job-card">
+          <h2>Tiêu đề công việc</h2>
+          <div class="job-meta">
+            <p><strong>Công ty:</strong> Tên công ty</p>
+            <p><strong>Địa điểm:</strong> Nơi làm việc</p>
+            <p><strong>Lương:</strong> Mức lương</p>
+          </div>
+          <div class="job-desc">
+            <strong>Mô tả:</strong> Mô tả công việc.
+            <br><strong>Yêu cầu:</strong> Yêu cầu công việc.
+          </div>
+        </div>
+        -->
+      </div>
+    </div>
+    
+    <!-- Japanese content -->
+    <div id="japanese" class="tab-content">
+      <div class="header">
+        <h1>求人情報 – JPIT Jobs</h1>
+      </div>
+      
+      <table>
+        <tr>
+          <th>会社名</th>
+          <td>JPIT Jobs株式会社</td>
+        </tr>
+        <tr>
+          <th>職種</th>
+          <td>ITエンジニア（東京勤務）</td>
+        </tr>
+        <tr>
+          <th>仕事内容</th>
+          <td>日本のお客様向けシステム開発</td>
+        </tr>
+        <tr>
+          <th>雇用形態</th>
+          <td>正社員</td>
+        </tr>
+        <tr>
+          <th>給与</th>
+          <td>月給 250,000円～350,000円（経験による）</td>
+        </tr>
+        <tr>
+          <th>応募条件</th>
+          <td>IT経験2年以上、日本語N3以上</td>
+        </tr>
+        <tr>
+          <th>勤務地</th>
+          <td>東京都内</td>
+        </tr>
+        <tr>
+          <th>応募方法</th>
+          <td>履歴書を下記のメールまでお送りください<br>Email: hiring@jpitjobs.com</td>
+        </tr>
+      </table>
+    </div>
   </div>
-</body>
-</html>
-  <div class="job-card">
-      <h2>Kỹ sư phát triển hệ thống (Tokyo)</h2>
-      <div class="job-meta">
-        <p><strong>Công ty:</strong> ABC Solutions</p>
-        <p><strong>Địa điểm:</strong> Tokyo</p>
-        <p><strong>Lương:</strong> 300,000 ~ 400,000 JPY</p>
-      </div>
-      <div class="job-desc">
-        <strong>Mô tả:</strong> Phát triển hệ thống cho khách hàng Nhật, sử dụng Java/Spring Boot.
-        <br><strong>Yêu cầu:</strong> Có kinh nghiệm phát triển Web App, tiếng Nhật N3 trở lên.
-      </div>
-    </div>
-
-    <!-- Job 2 -->
-    <div class="job-card">
-      <h2>Kỹ sư kiểm thử phần mềm (Osaka)</h2>
-      <div class="job-meta">
-        <p><strong>Công ty:</strong> OsakaTech</p>
-        <p><strong>Địa điểm:</strong> Osaka</p>
-        <p><strong>Lương:</strong> 270,000 ~ 320,000 JPY</p>
-      </div>
-      <div class="job-desc">
-        <strong>Mô tả:</strong> Thực hiện kiểm thử phần mềm trong lĩnh vực tự động hóa.
-        <br><strong>Yêu cầu:</strong> Có kinh nghiệm kiểm thử, ưu tiên ISTQB, tiếng Nhật N4+.
-      </div>
-    </div>
-
-    <!-- Job 3 -->
-    <div class="job-card">
-      <h2>Kỹ sư cầu nối (Remote + Nhật)</h2>
-      <div class="job-meta">
-        <p><strong>Công ty:</strong> JPIT Offshore</p>
-        <p><strong>Địa điểm:</strong> Việt Nam / Nhật Bản</p>
-        <p><strong>Lương:</strong> 1,800 ~ 2,500 USD</p>
-      </div>
-      <div class="job-desc">
-        <strong>Mô tả:</strong> Làm việc giữa team VN và khách hàng Nhật, quản lý tiến độ dự án.
-        <br><strong>Yêu cầu:</strong> Có kinh nghiệm làm BrSE, tiếng Nhật N2 trở lên.
-      </div>
-    </div>
-  </div>
-
+  
   <footer>
     © 2025 JPIT Jobs | Liên hệ: hiring@jpitjobs.com
   </footer>
+  
+  <script>
+    function openTab(tabName) {
+      // Hide all tab contents
+      const tabContents = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+      
+      // Deactivate all tabs
+      const tabs = document.getElementsByClassName("tab");
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("active");
+      }
+      
+      // Activate the selected tab and its content
+      document.getElementById(tabName).classList.add("active");
+      
+      // Find and activate the clicked tab button
+      const tabButtons = document.getElementsByClassName("tab");
+      for (let i = 0; i < tabButtons.length; i++) {
+        if (tabButtons[i].textContent.toLowerCase().includes(tabName.substring(0, 4))) {
+          tabButtons[i].classList.add("active");
+        }
+      }
+    }
+  </script>
 </body>
 </html>
