@@ -1,79 +1,123 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tuyển dụng - JPIT Jobs</title>
+  <title>求人情報 - JPIT Jobs</title>
   <style>
     body { 
-      font-family: Arial, sans-serif; 
+      font-family: 'Meiryo', 'Hiragino Kaku Gothic Pro', sans-serif; 
       margin: 0; 
       padding: 0; 
-      background: #f9f9f9; 
+      background: #f5f5f5; 
+      color: #333;
     }
     
     .container { 
-      max-width: 1200px; 
+      max-width: 1000px; 
       margin: 0 auto; 
       padding: 20px; 
     }
     
     .header {
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
       margin-bottom: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-bottom: 3px solid #00796b;
+      padding-bottom: 10px;
     }
     
     h1 { 
-      color: #333; 
+      color: #00796b; 
       margin-top: 0;
+      font-size: 24px;
     }
     
-    .job-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 20px;
-    }
-    
-    .job-card {
+    .job-listing {
       background: white;
-      border-radius: 8px;
+      border: 1px solid #ddd;
+      margin-bottom: 30px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .job-header {
+      background: #f0f7f6;
+      padding: 15px;
+      border-bottom: 2px solid #00796b;
+    }
+    
+    .job-header h2 {
+      margin: 0;
+      font-size: 18px;
+      color: #00796b;
+    }
+    
+    .job-header .job-id {
+      color: #666;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    
+    .job-details {
+      padding: 0;
+    }
+    
+    .job-details table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .job-details th {
+      width: 25%;
+      text-align: left;
+      padding: 12px 15px;
+      background: #f9f9f9;
+      border-bottom: 1px solid #ddd;
+      font-weight: normal;
+      color: #333;
+    }
+    
+    .job-details td {
+      width: 75%;
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .important {
+      color: #d32f2f;
+      font-weight: bold;
+    }
+    
+    .highlight {
+      background-color: #fff9c4;
+      padding: 2px;
+    }
+    
+    .apply-button {
+      text-align: center;
       padding: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      background: #f5f5f5;
     }
     
-    .job-card:hover {
-      transform: translateY(-5px);
+    .apply-button button {
+      background: #00796b;
+      color: white;
+      border: none;
+      padding: 10px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
     }
     
-    .job-card h2 {
-      margin-top: 0;
-      color: #2962ff;
-      font-size: 1.3rem;
-    }
-    
-    .job-meta {
-      margin-bottom: 15px;
-    }
-    
-    .job-meta p {
-      margin: 5px 0;
-    }
-    
-    .job-desc {
-      font-size: 0.95rem;
-      line-height: 1.5;
+    .apply-button button:hover {
+      background: #00695c;
     }
     
     footer {
       text-align: center;
       margin-top: 50px;
       padding: 20px;
-      background: #333;
+      background: #424242;
       color: white;
+      font-size: 14px;
     }
     
     /* Tab system for languages */
@@ -84,16 +128,19 @@
     
     .tab {
       padding: 10px 20px;
-      background: #eee;
+      background: #e0e0e0;
       border: none;
       cursor: pointer;
-      border-radius: 5px 5px 0 0;
+      border-bottom: 3px solid transparent;
       margin-right: 5px;
+      font-size: 16px;
     }
     
     .tab.active {
-      background: #2962ff;
-      color: white;
+      background: #f5f5f5;
+      border-bottom: 3px solid #00796b;
+      color: #00796b;
+      font-weight: bold;
     }
     
     .tab-content {
@@ -103,159 +150,447 @@
     .tab-content.active {
       display: block;
     }
-    
-    /* Style for Japanese table */
-    table { 
-      width: 100%; 
-      border-collapse: collapse; 
-      margin-top: 20px; 
-    }
-    
-    th, td { 
-      border: 1px solid #ccc; 
-      padding: 10px; 
-      text-align: left; 
-    }
-    
-    th { 
-      background: #f2f2f2; 
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <!-- Language tabs -->
     <div class="tabs">
-      <button class="tab active" onclick="openTab('vietnamese')">Tiếng Việt</button>
-      <button class="tab" onclick="openTab('japanese')">日本語</button>
+      <button class="tab" onclick="openTab('vietnamese')">Tiếng Việt</button>
+      <button class="tab active" onclick="openTab('japanese')">日本語</button>
+    </div>
+    
+    <!-- Japanese content - Hello Work style -->
+    <div id="japanese" class="tab-content active">
+      <div class="header">
+        <h1>求人情報一覧 - JPIT Jobs</h1>
+      </div>
+      
+      <!-- Job 1 (Hello Work Format) -->
+      <div class="job-listing">
+        <div class="job-header">
+          <h2>ITエンジニア（システム開発）</h2>
+          <div class="job-id">求人番号: JP-IT-2025-001 | 公開日: 2025/04/16</div>
+        </div>
+        <div class="job-details">
+          <table>
+            <tr>
+              <th>職種</th>
+              <td>ITエンジニア（システム開発）</td>
+            </tr>
+            <tr>
+              <th>仕事内容</th>
+              <td>
+                日本のお客様向けシステム開発（要件定義、設計、開発、テスト）<br>
+                主に<span class="highlight">金融系システム</span>や<span class="highlight">業務系アプリケーション</span>の開発に携わっていただきます。
+              </td>
+            </tr>
+            <tr>
+              <th>雇用形態</th>
+              <td>正社員</td>
+            </tr>
+            <tr>
+              <th>産業</th>
+              <td>情報通信業</td>
+            </tr>
+            <tr>
+              <th>就業場所</th>
+              <td>
+                東京都内（新宿区）<br>
+                最寄駅: JR・地下鉄 新宿駅から徒歩7分
+              </td>
+            </tr>
+            <tr>
+              <th>就業時間</th>
+              <td>
+                9:00～18:00（休憩60分）<br>
+                フレックスタイム制あり（コアタイム 10:00～15:00）
+              </td>
+            </tr>
+            <tr>
+              <th>休日</th>
+              <td>
+                完全週休2日制（土日）、祝日、年末年始休暇、有給休暇<br>
+                年間休日125日
+              </td>
+            </tr>
+            <tr>
+              <th>賃金</th>
+              <td class="important">
+                月給 250,000円～350,000円（経験・能力による）<br>
+                ※残業手当、通勤手当（上限25,000円/月）別途支給
+              </td>
+            </tr>
+            <tr>
+              <th>賞与</th>
+              <td>年2回（7月、12月）※業績による</td>
+            </tr>
+            <tr>
+              <th>昇給</th>
+              <td>年1回（4月）</td>
+            </tr>
+            <tr>
+              <th>加入保険</th>
+              <td>健康保険、厚生年金、雇用保険、労災保険</td>
+            </tr>
+            <tr>
+              <th>必要な経験等</th>
+              <td>
+                <ul>
+                  <li>IT経験2年以上</li>
+                  <li>Java、PHP、Python、C#などいずれかの言語での開発経験</li>
+                  <li>日本語能力 N3以上</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>選考方法</th>
+              <td>書類選考、面接（1～2回）、スキルテスト</td>
+            </tr>
+            <tr>
+              <th>選考結果</th>
+              <td>面接後7日以内に連絡</td>
+            </tr>
+            <tr>
+              <th>応募方法</th>
+              <td>
+                履歴書と職務経歴書を下記のメールまでお送りください。<br>
+                Email: <a href="mailto:hiring@jpitjobs.com">hiring@jpitjobs.com</a>
+              </td>
+            </tr>
+            <tr>
+              <th>担当者</th>
+              <td>採用担当：田中</td>
+            </tr>
+          </table>
+        </div>
+        <div class="apply-button">
+          <button onclick="applyJob('JP-IT-2025-001')">この求人に応募する</button>
+        </div>
+      </div>
+      
+      <!-- Job 2 (Hello Work Format) -->
+      <div class="job-listing">
+        <div class="job-header">
+          <h2>フロントエンドエンジニア</h2>
+          <div class="job-id">求人番号: JP-IT-2025-002 | 公開日: 2025/04/15</div>
+        </div>
+        <div class="job-details">
+          <table>
+            <tr>
+              <th>職種</th>
+              <td>フロントエンドエンジニア</td>
+            </tr>
+            <tr>
+              <th>仕事内容</th>
+              <td>
+                Webアプリケーションのフロントエンド開発<br>
+                <span class="highlight">React/Vue.js</span>を使用したSPAの開発、UI/UX設計
+              </td>
+            </tr>
+            <tr>
+              <th>雇用形態</th>
+              <td>正社員</td>
+            </tr>
+            <tr>
+              <th>産業</th>
+              <td>情報通信業</td>
+            </tr>
+            <tr>
+              <th>就業場所</th>
+              <td>
+                東京都内（渋谷区）<br>
+                最寄駅: JR・地下鉄 渋谷駅から徒歩5分
+              </td>
+            </tr>
+            <tr>
+              <th>就業時間</th>
+              <td>
+                9:30～18:30（休憩60分）<br>
+                リモートワーク可（週3日まで）
+              </td>
+            </tr>
+            <tr>
+              <th>休日</th>
+              <td>
+                完全週休2日制（土日）、祝日、年末年始休暇、有給休暇<br>
+                年間休日125日
+              </td>
+            </tr>
+            <tr>
+              <th>賃金</th>
+              <td class="important">
+                月給 280,000円～380,000円（経験・能力による）<br>
+                ※残業手当、通勤手当（上限25,000円/月）別途支給
+              </td>
+            </tr>
+            <tr>
+              <th>賞与</th>
+              <td>年2回（7月、12月）※業績による</td>
+            </tr>
+            <tr>
+              <th>昇給</th>
+              <td>年1回（4月）</td>
+            </tr>
+            <tr>
+              <th>加入保険</th>
+              <td>健康保険、厚生年金、雇用保険、労災保険</td>
+            </tr>
+            <tr>
+              <th>必要な経験等</th>
+              <td>
+                <ul>
+                  <li>フロントエンド開発経験2年以上</li>
+                  <li>HTML/CSS/JavaScript経験必須</li>
+                  <li>React.jsまたはVue.jsの使用経験</li>
+                  <li>日本語能力 N3以上</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>選考方法</th>
+              <td>書類選考、面接（1～2回）、コーディングテスト</td>
+            </tr>
+            <tr>
+              <th>選考結果</th>
+              <td>面接後7日以内に連絡</td>
+            </tr>
+            <tr>
+              <th>応募方法</th>
+              <td>
+                履歴書と職務経歴書を下記のメールまでお送りください。<br>
+                Email: <a href="mailto:hiring@jpitjobs.com">hiring@jpitjobs.com</a>
+              </td>
+            </tr>
+            <tr>
+              <th>担当者</th>
+              <td>採用担当：佐藤</td>
+            </tr>
+          </table>
+        </div>
+        <div class="apply-button">
+          <button onclick="applyJob('JP-IT-2025-002')">この求人に応募する</button>
+        </div>
+      </div>
     </div>
     
     <!-- Vietnamese content -->
-    <div id="vietnamese" class="tab-content active">
+    <div id="vietnamese" class="tab-content">
       <div class="header">
-        <h1>Tuyển dụng - JPIT Jobs</h1>
+        <h1>Danh sách tuyển dụng - JPIT Jobs</h1>
       </div>
       
-      <div class="job-grid">
-        <!-- Job 1 -->
-        <div class="job-card">
-          <h2>Kỹ sư phát triển hệ thống (Tokyo)</h2>
-          <div class="job-meta">
-            <p><strong>Công ty:</strong> ABC Solutions</p>
-            <p><strong>Địa điểm:</strong> Tokyo</p>
-            <p><strong>Lương:</strong> 300,000 ~ 400,000 JPY</p>
-          </div>
-          <div class="job-desc">
-            <strong>Mô tả:</strong> Phát triển hệ thống cho khách hàng Nhật, sử dụng Java/Spring Boot.
-            <br><strong>Yêu cầu:</strong> Có kinh nghiệm phát triển Web App, tiếng Nhật N3 trở lên.
-          </div>
+      <!-- Job 1 in Vietnamese -->
+      <div class="job-listing">
+        <div class="job-header">
+          <h2>Kỹ sư IT (Phát triển hệ thống)</h2>
+          <div class="job-id">Mã tin: JP-IT-2025-001 | Ngày đăng: 16/04/2025</div>
         </div>
-        
-        <!-- Job 2 -->
-        <div class="job-card">
-          <h2>Kỹ sư kiểm thử phần mềm (Osaka)</h2>
-          <div class="job-meta">
-            <p><strong>Công ty:</strong> OsakaTech</p>
-            <p><strong>Địa điểm:</strong> Osaka</p>
-            <p><strong>Lương:</strong> 270,000 ~ 320,000 JPY</p>
-          </div>
-          <div class="job-desc">
-            <strong>Mô tả:</strong> Thực hiện kiểm thử phần mềm trong lĩnh vực tự động hóa.
-            <br><strong>Yêu cầu:</strong> Có kinh nghiệm kiểm thử, ưu tiên ISTQB, tiếng Nhật N4+.
-          </div>
+        <div class="job-details">
+          <table>
+            <tr>
+              <th>Vị trí</th>
+              <td>Kỹ sư IT (Phát triển hệ thống)</td>
+            </tr>
+            <tr>
+              <th>Mô tả công việc</th>
+              <td>
+                Phát triển hệ thống cho khách hàng Nhật (từ phân tích yêu cầu, thiết kế, phát triển đến kiểm thử)<br>
+                Chủ yếu tham gia vào việc phát triển <span class="highlight">hệ thống tài chính</span> và <span class="highlight">ứng dụng nghiệp vụ</span>.
+              </td>
+            </tr>
+            <tr>
+              <th>Hình thức</th>
+              <td>Nhân viên chính thức</td>
+            </tr>
+            <tr>
+              <th>Ngành nghề</th>
+              <td>Công nghệ thông tin và truyền thông</td>
+            </tr>
+            <tr>
+              <th>Địa điểm làm việc</th>
+              <td>
+                Tokyo (Quận Shinjuku)<br>
+                Gần ga: 7 phút đi bộ từ ga Shinjuku (JR/Tàu điện ngầm)
+              </td>
+            </tr>
+            <tr>
+              <th>Thời gian làm việc</th>
+              <td>
+                9:00～18:00 (Nghỉ giải lao 60 phút)<br>
+                Áp dụng giờ làm việc linh hoạt (Thời gian cốt lõi 10:00～15:00)
+              </td>
+            </tr>
+            <tr>
+              <th>Ngày nghỉ</th>
+              <td>
+                Nghỉ 2 ngày/tuần (T7, CN), ngày lễ, nghỉ cuối năm, nghỉ phép có lương<br>
+                125 ngày nghỉ/năm
+              </td>
+            </tr>
+            <tr>
+              <th>Lương</th>
+              <td class="important">
+                250,000～350,000 yên/tháng (tùy theo kinh nghiệm và năng lực)<br>
+                ※ Phụ cấp làm thêm giờ, phụ cấp đi lại (tối đa 25,000 yên/tháng) được thanh toán riêng
+              </td>
+            </tr>
+            <tr>
+              <th>Thưởng</th>
+              <td>2 lần/năm (Tháng 7, tháng 12) ※ Tùy theo hiệu suất công ty</td>
+            </tr>
+            <tr>
+              <th>Tăng lương</th>
+              <td>1 lần/năm (Tháng 4)</td>
+            </tr>
+            <tr>
+              <th>Bảo hiểm</th>
+              <td>Bảo hiểm sức khỏe, hưu trí, bảo hiểm việc làm, bảo hiểm tai nạn lao động</td>
+            </tr>
+            <tr>
+              <th>Yêu cầu</th>
+              <td>
+                <ul>
+                  <li>Ít nhất 2 năm kinh nghiệm IT</li>
+                  <li>Kinh nghiệm phát triển với một trong các ngôn ngữ: Java, PHP, Python, C#</li>
+                  <li>Tiếng Nhật trình độ N3 trở lên</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>Quy trình tuyển dụng</th>
+              <td>Sơ tuyển hồ sơ, phỏng vấn (1-2 lần), kiểm tra kỹ năng</td>
+            </tr>
+            <tr>
+              <th>Kết quả</th>
+              <td>Thông báo trong vòng 7 ngày sau phỏng vấn</td>
+            </tr>
+            <tr>
+              <th>Cách ứng tuyển</th>
+              <td>
+                Vui lòng gửi CV và sơ yếu lý lịch đến email dưới đây:<br>
+                Email: <a href="mailto:hiring@jpitjobs.com">hiring@jpitjobs.com</a>
+              </td>
+            </tr>
+            <tr>
+              <th>Người phụ trách</th>
+              <td>Phòng tuyển dụng: Tanaka</td>
+            </tr>
+          </table>
         </div>
-        
-        <!-- Job 3 -->
-        <div class="job-card">
-          <h2>Kỹ sư cầu nối (Remote + Nhật)</h2>
-          <div class="job-meta">
-            <p><strong>Công ty:</strong> JPIT Offshore</p>
-            <p><strong>Địa điểm:</strong> Việt Nam / Nhật Bản</p>
-            <p><strong>Lương:</strong> 1,800 ~ 2,500 USD</p>
-          </div>
-          <div class="job-desc">
-            <strong>Mô tả:</strong> Làm việc giữa team VN và khách hàng Nhật, quản lý tiến độ dự án.
-            <br><strong>Yêu cầu:</strong> Có kinh nghiệm làm BrSE, tiếng Nhật N2 trở lên.
-          </div>
+        <div class="apply-button">
+          <button onclick="applyJob('JP-IT-2025-001')">Ứng tuyển ngay</button>
         </div>
-        
-        <!-- Job 4 - Mẫu để thêm job mới -->
-        <div class="job-card">
-          <h2>Frontend Developer (Tokyo)</h2>
-          <div class="job-meta">
-            <p><strong>Công ty:</strong> JPIT Jobs Co., Ltd.</p>
-            <p><strong>Địa điểm:</strong> Tokyo</p>
-            <p><strong>Lương:</strong> 280,000 ~ 350,000 JPY</p>
-          </div>
-          <div class="job-desc">
-            <strong>Mô tả:</strong> Phát triển giao diện người dùng sử dụng React/Vue.js.
-            <br><strong>Yêu cầu:</strong> 2+ năm kinh nghiệm Frontend, tiếng Nhật N3 trở lên.
-          </div>
-        </div>
-        
-        <!-- Bạn có thể dễ dàng thêm job mới bằng cách sao chép mẫu bên dưới -->
-        <!-- 
-        <div class="job-card">
-          <h2>Tiêu đề công việc</h2>
-          <div class="job-meta">
-            <p><strong>Công ty:</strong> Tên công ty</p>
-            <p><strong>Địa điểm:</strong> Nơi làm việc</p>
-            <p><strong>Lương:</strong> Mức lương</p>
-          </div>
-          <div class="job-desc">
-            <strong>Mô tả:</strong> Mô tả công việc.
-            <br><strong>Yêu cầu:</strong> Yêu cầu công việc.
-          </div>
-        </div>
-        -->
-      </div>
-    </div>
-    
-    <!-- Japanese content -->
-    <div id="japanese" class="tab-content">
-      <div class="header">
-        <h1>求人情報 – JPIT Jobs</h1>
       </div>
       
-      <table>
-        <tr>
-          <th>会社名</th>
-          <td>JPIT Jobs株式会社</td>
-        </tr>
-        <tr>
-          <th>職種</th>
-          <td>ITエンジニア（東京勤務）</td>
-        </tr>
-        <tr>
-          <th>仕事内容</th>
-          <td>日本のお客様向けシステム開発</td>
-        </tr>
-        <tr>
-          <th>雇用形態</th>
-          <td>正社員</td>
-        </tr>
-        <tr>
-          <th>給与</th>
-          <td>月給 250,000円～350,000円（経験による）</td>
-        </tr>
-        <tr>
-          <th>応募条件</th>
-          <td>IT経験2年以上、日本語N3以上</td>
-        </tr>
-        <tr>
-          <th>勤務地</th>
-          <td>東京都内</td>
-        </tr>
-        <tr>
-          <th>応募方法</th>
-          <td>履歴書を下記のメールまでお送りください<br>Email: hiring@jpitjobs.com</td>
-        </tr>
-      </table>
+      <!-- Job 2 in Vietnamese -->
+      <div class="job-listing">
+        <div class="job-header">
+          <h2>Kỹ sư Frontend</h2>
+          <div class="job-id">Mã tin: JP-IT-2025-002 | Ngày đăng: 15/04/2025</div>
+        </div>
+        <div class="job-details">
+          <table>
+            <tr>
+              <th>Vị trí</th>
+              <td>Kỹ sư Frontend</td>
+            </tr>
+            <tr>
+              <th>Mô tả công việc</th>
+              <td>
+                Phát triển frontend cho ứng dụng web<br>
+                Phát triển SPA sử dụng <span class="highlight">React/Vue.js</span>, thiết kế UI/UX
+              </td>
+            </tr>
+            <tr>
+              <th>Hình thức</th>
+              <td>Nhân viên chính thức</td>
+            </tr>
+            <tr>
+              <th>Ngành nghề</th>
+              <td>Công nghệ thông tin và truyền thông</td>
+            </tr>
+            <tr>
+              <th>Địa điểm làm việc</th>
+              <td>
+                Tokyo (Quận Shibuya)<br>
+                Gần ga: 5 phút đi bộ từ ga Shibuya (JR/Tàu điện ngầm)
+              </td>
+            </tr>
+            <tr>
+              <th>Thời gian làm việc</th>
+              <td>
+                9:30～18:30 (Nghỉ giải lao 60 phút)<br>
+                Có thể làm việc từ xa (tối đa 3 ngày/tuần)
+              </td>
+            </tr>
+            <tr>
+              <th>Ngày nghỉ</th>
+              <td>
+                Nghỉ 2 ngày/tuần (T7, CN), ngày lễ, nghỉ cuối năm, nghỉ phép có lương<br>
+                125 ngày nghỉ/năm
+              </td>
+            </tr>
+            <tr>
+              <th>Lương</th>
+              <td class="important">
+                280,000～380,000 yên/tháng (tùy theo kinh nghiệm và năng lực)<br>
+                ※ Phụ cấp làm thêm giờ, phụ cấp đi lại (tối đa 25,000 yên/tháng) được thanh toán riêng
+              </td>
+            </tr>
+            <tr>
+              <th>Thưởng</th>
+              <td>2 lần/năm (Tháng 7, tháng 12) ※ Tùy theo hiệu suất công ty</td>
+            </tr>
+            <tr>
+              <th>Tăng lương</th>
+              <td>1 lần/năm (Tháng 4)</td>
+            </tr>
+            <tr>
+              <th>Bảo hiểm</th>
+              <td>Bảo hiểm sức khỏe, hưu trí, bảo hiểm việc làm, bảo hiểm tai nạn lao động</td>
+            </tr>
+            <tr>
+              <th>Yêu cầu</th>
+              <td>
+                <ul>
+                  <li>Ít nhất 2 năm kinh nghiệm phát triển frontend</li>
+                  <li>Có kinh nghiệm với HTML/CSS/JavaScript (bắt buộc)</li>
+                  <li>Có kinh nghiệm sử dụng React.js hoặc Vue.js</li>
+                  <li>Tiếng Nhật trình độ N3 trở lên</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>Quy trình tuyển dụng</th>
+              <td>Sơ tuyển hồ sơ, phỏng vấn (1-2 lần), bài kiểm tra coding</td>
+            </tr>
+            <tr>
+              <th>Kết quả</th>
+              <td>Thông báo trong vòng 7 ngày sau phỏng vấn</td>
+            </tr>
+            <tr>
+              <th>Cách ứng tuyển</th>
+              <td>
+                Vui lòng gửi CV và sơ yếu lý lịch đến email dưới đây:<br>
+                Email: <a href="mailto:hiring@jpitjobs.com">hiring@jpitjobs.com</a>
+              </td>
+            </tr>
+            <tr>
+              <th>Người phụ trách</th>
+              <td>Phòng tuyển dụng: Sato</td>
+            </tr>
+          </table>
+        </div>
+        <div class="apply-button">
+          <button onclick="applyJob('JP-IT-2025-002')">Ứng tuyển ngay</button>
+        </div>
+      </div>
     </div>
   </div>
   
   <footer>
-    © 2025 JPIT Jobs | Liên hệ: hiring@jpitjobs.com
+    © 2025 JPIT Jobs | Email: hiring@jpitjobs.com | Tel: 03-1234-5678
   </footer>
   
   <script>
@@ -282,6 +617,10 @@
           tabButtons[i].classList.add("active");
         }
       }
+    }
+    
+    function applyJob(jobId) {
+      alert('Bạn đang ứng tuyển cho vị trí mã số: ' + jobId + '\nVui lòng gửi CV của bạn đến email: hiring@jpitjobs.com');
     }
   </script>
 </body>
